@@ -164,6 +164,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Blokus.cpp" />
+    <ClCompile Include="game_board.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="game.h" />
+    <ClInclude Include="game_board.h" />
+    <ClInclude Include="game_piece.h" />
+    <ClInclude Include="player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
