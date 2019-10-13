@@ -1,14 +1,20 @@
 #pragma once
 #include <vector>
 #include "game_board.h"
-#include "player.h"
 
 using namespace std;
 
 class Game {
 public:
-	void change_turn() { curTurn = (curTurn + 1) % players.size(); };
+	Game();
+	void change_turn() { curTurn = (curTurn) % players.size() + 1; };
+	void terminalDraw(GridLoc,GamePiece);
+	GameBoard& getGameBoard() { return board; };
+	Player currentPlayer() { return players[curTurn - 1]; };
+	GameBoard board;
 private:
+	int numPlayers;
 	vector<Player> players;
-	short int curTurn;
+
+	int curTurn;
 };

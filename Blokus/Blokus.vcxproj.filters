@@ -21,6 +21,15 @@
     <ClCompile Include="game_board.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="game_piece.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
