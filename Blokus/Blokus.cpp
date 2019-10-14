@@ -7,7 +7,7 @@
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+	sf::RenderWindow window(sf::VideoMode(200, 200), "Blokus!");
 	sf::CircleShape shape(100.f);
 	shape.setFillColor(sf::Color::Green);
 	
@@ -24,16 +24,16 @@ int main()
 			switch (event.type) {
 			case sf::Event::KeyPressed:
 				if (event.key.code == sf::Keyboard::W) {
-					placement = GridLoc(placement.x, placement.y + 1);
-				}
-				if (event.key.code == sf::Keyboard::A) {
 					placement = GridLoc(placement.x-1, placement.y);
 				}
+				if (event.key.code == sf::Keyboard::A) {
+					placement = GridLoc(placement.x, placement.y-1);
+				}
 				if (event.key.code == sf::Keyboard::S) {
-					placement = GridLoc(placement.x, placement.y - 1);
+					placement = GridLoc(placement.x+1, placement.y);
 				}
 				if (event.key.code == sf::Keyboard::D) {
-					placement = GridLoc(placement.x+1, placement.y);
+					placement = GridLoc(placement.x, placement.y+1);
 				}
 				if (event.key.code == sf::Keyboard::R) {
 					currentPiece.rotate(1);
@@ -44,7 +44,11 @@ int main()
 				if (event.key.code == sf::Keyboard::F) {
 					currentPiece.flip();
 				}
-				if (event.key.code == sf::Keyboard::Enter) {
+				if (event.key.code == sf::Keyboard::C) {
+					currentPiece = game.currentPlayer().getAvalPiece();
+					// Change Piece - picks different random one, would be better to cycle through
+				}
+				if (event.key.code == sf::Keyboard::Enter || event.key.code == sf::Keyboard::Space) {
 					bool placed = game.getGameBoard().placePiece(currentPiece, placement, game.currentPlayer());
 					if (placed) {
 						game.change_turn();

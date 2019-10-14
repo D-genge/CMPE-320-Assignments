@@ -16,7 +16,7 @@ void Game::terminalDraw(GridLoc placement, GamePiece current) // for testing
 		for (int y = 0; y < board.getHeight(); y++) {
 			for (auto& block : current.getBlocks()) {
 				if (x == block.getLoc().x + placement.x && y == block.getLoc().y + placement.y) {
-					cout << "O ";
+					cout << "X ";
 					blockHere = true;
 				}
 			}

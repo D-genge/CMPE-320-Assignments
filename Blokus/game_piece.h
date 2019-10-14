@@ -63,6 +63,7 @@ public:
 	void rotate(int rotations);
 	void flip();
 	void drawTerminal();
+	CONFIG type() { return config; };
 private:
 	vector<Block> blocks;
 	GridLoc loc;
