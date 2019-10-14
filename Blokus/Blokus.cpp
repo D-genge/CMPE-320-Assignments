@@ -3,11 +3,11 @@
 
 #include <SFML/Graphics.hpp>
 #include "game.h"
-#include <chrono>
 
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(200, 200), "Blokus!");
+	window.setFramerateLimit(60);
 	sf::CircleShape shape(100.f);
 	shape.setFillColor(sf::Color::Green);
 	
@@ -16,7 +16,7 @@ int main()
 	GridLoc placement = GridLoc(0,0);
 	while (window.isOpen())
 	{
-		auto start = chrono::high_resolution_clock::now();
+		
 		
 		sf::Event event;
 		while (window.pollEvent(event))
@@ -24,16 +24,16 @@ int main()
 			switch (event.type) {
 			case sf::Event::KeyPressed:
 				if (event.key.code == sf::Keyboard::W) {
-					placement = GridLoc(placement.x-1, placement.y);
+					placement = GridLoc(placement.x, placement.y+1);
 				}
 				if (event.key.code == sf::Keyboard::A) {
-					placement = GridLoc(placement.x, placement.y-1);
+					placement = GridLoc(placement.x-1, placement.y);
 				}
 				if (event.key.code == sf::Keyboard::S) {
-					placement = GridLoc(placement.x+1, placement.y);
+					placement = GridLoc(placement.x, placement.y-1);
 				}
 				if (event.key.code == sf::Keyboard::D) {
-					placement = GridLoc(placement.x, placement.y+1);
+					placement = GridLoc(placement.x+1, placement.y);
 				}
 				if (event.key.code == sf::Keyboard::R) {
 					currentPiece.rotate(1);
@@ -63,11 +63,6 @@ int main()
 		window.draw(shape);
 		window.display();
 		game.terminalDraw(placement, currentPiece); 
-		currentPiece.drawTerminal();
-		auto finish = chrono::high_resolution_clock::now();
-		while (((chrono::duration<double>)(finish - start)).count() < 0.5) {
-			finish = chrono::high_resolution_clock::now();
-		}
 
 	}
 

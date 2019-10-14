@@ -182,13 +182,33 @@ void GamePiece::drawTerminal()
 					   {' ',' ',' ',' ',' ','\n'},
 					   {' ',' ',' ',' ',' ','\n'},
 					   {' ',' ',' ',' ',' ','\n'},
-					   {' ',' ',' ',' ',' ',0} };
+					   {' ',' ',' ',' ',' ','\n'} };
+	string output = "";
 	for (auto& block : blocks) {
 		rep[block.getLoc().x+2][block.getLoc().y+2] = 'X';
 	}
 	for (int i = 0; i < 5;i++) {
 		for (int j = 0; j < 6; j++) {
-			cout << " " << rep[i][j];
+			output += " " + string(1,rep[i][j]);
 		}
 	}
+	cout << output;
+}
+string GamePiece::toString()
+{
+	char rep[5][6] = { {' ',' ',' ',' ',' ','\n'},
+					   {' ',' ',' ',' ',' ','\n'},
+					   {' ',' ',' ',' ',' ','\n'},
+					   {' ',' ',' ',' ',' ','\n'},
+					   {' ',' ',' ',' ',' ','\n'} };
+	string output = "";
+	for (auto& block : blocks) {
+		rep[2-block.getLoc().y][2 + block.getLoc().x] = 'X';
+	}
+	for (int x = 0; x < 5; x++) {
+		for (int y = 0; y < 6; y++) {
+			output += " " + string(1, rep[x][y]);
+		}
+	}
+	return output;
 }
