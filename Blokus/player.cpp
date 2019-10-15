@@ -10,7 +10,7 @@ Player::Player(int id) :
 }
 
 
-GamePiece Player::getAvalPiece()
+GamePiece Player::getAvalPiece() //set playerID as parameter to func
 {
 	return availPieces.at(rand() % availPieces.size());
 }

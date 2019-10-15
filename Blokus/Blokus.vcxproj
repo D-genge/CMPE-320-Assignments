@@ -163,17 +163,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Blokus.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="game_board.cpp" />
     <ClCompile Include="game_piece.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="game_piece_sfml.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h" />
     <ClInclude Include="game_board.h" />
     <ClInclude Include="game_piece.h" />
+    <ClInclude Include="game_piece_sfml.h" />
     <ClInclude Include="player.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="game_pieces\board.png" />
+    <Image Include="game_pieces\I5.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
