@@ -10,20 +10,22 @@ Game::Game() : numPlayers(4), curTurn(1), board()
 
 void Game::terminalDraw(GridLoc placement, GamePiece current) // for testing
 {
-	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 	bool blockHere = false;
-	for (int x = 0; x < board.getWidth(); x++) {
-		for (int y = 0; y < board.getHeight(); y++) {
+	string formatted = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+	for (int y = board.getHeight()-1; y >= 0; y--) {
+		for (int x = 0; x < board.getWidth(); x++) {
 			for (auto& block : current.getBlocks()) {
 				if (x == block.getLoc().x + placement.x && y == block.getLoc().y + placement.y) {
-					cout << "O ";
+					formatted += "X ";
 					blockHere = true;
 				}
 			}
-			if (!blockHere) cout << board.getGridVal(GridLoc(x, y)) << " ";
+			if (!blockHere)	formatted += to_string(board.getGridVal(GridLoc(x, y))) + " ";
 			blockHere = false;
 			
 		}
-		cout << endl;
+		formatted += "\n";
 	}
+	formatted += current.toString();
+	cout << formatted;
 }

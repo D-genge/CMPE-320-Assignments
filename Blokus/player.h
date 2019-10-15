@@ -10,6 +10,7 @@ public:
 	void finishedTurn() { moved = true; };
 	bool hasMoved() { return moved; };
 	GamePiece getAvalPiece();
+	void removePiece(GamePiece piece);
 private:
 	vector<GamePiece> availPieces;
 	int ID;

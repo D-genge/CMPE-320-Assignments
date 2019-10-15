@@ -17,6 +17,7 @@ bool GameBoard::placePiece(GamePiece piece, GridLoc loc, Player p)
 			local.y += loc.y;
 			grid[local.x][local.y] = p.getID();
 		}
+		p.removePiece(piece);
 		return true;
 	}
 	return false;
@@ -26,6 +27,7 @@ bool GameBoard::placeable(GamePiece piece, GridLoc loc, Player p)
 {
 	bool cornerCheck = false; // if this becomes true the piece can be placed
 	bool firstPiece = false;
+	bool adjacentCheck = false;
 	for (auto& block : piece.getBlocks()) {
 		GridLoc local = block.getLoc();
 		GridLoc onGrid = GridLoc(local.x + loc.x, local.y + loc.y);
@@ -47,6 +49,10 @@ bool GameBoard::placeable(GamePiece piece, GridLoc loc, Player p)
 				}
 			}
 		}
+		if (onGrid.x + 1 < width  && grid[onGrid.x + 1][onGrid.y] == p.getID()) return false;
+		if (onGrid.x - 1 >= 0     && grid[onGrid.x - 1][onGrid.y] == p.getID()) return false;
+		if (onGrid.y + 1 < height && grid[onGrid.x][onGrid.y + 1] == p.getID()) return false;
+		if (onGrid.y - 1 >= 0     && grid[onGrid.x][onGrid.y - 1] == p.getID()) return false;
 	}
 	return cornerCheck || firstPiece;
 }
