@@ -2,8 +2,15 @@
 #include "game_piece.h"
 #include "player.h"
 
+sf::RenderWindow window(sf::VideoMode(800, 800), "SFML works!");
+sf::Texture texturePiece;
+sf::Texture textureBoard;
+sf::Vector2u TextureSize;  //Added to store texture size.
+sf::Vector2u WindowSize;   //Added to store window size.
+sf::Sprite gameBoard;
+sf::Sprite gamePiece;
 
-void setColor(int player);
+void setPlayerColor(int player);
 
 int main()
 {
@@ -46,31 +53,6 @@ int main()
 		gamePiece.setColor(sf::Color(255, 255, 0));
 	}
 
-	//figure out how to rescale board and pieces
-
-
-
-	/*
-	//set colour of gamepiece based upon player id and pass to availPieces
-	void setColor(int player, sf::Sprite gamePiece) {
-		switch (player) {
-		case 1:
-			gamePiece.setColor(sf::Color(0, 0, 205)); //set Blue
-			break; //optional
-		case 2:
-			gamePiece.setColor(sf::Color(0, 153, 76)); // set Green
-			break; //optional
-		case 3:
-			gamePiece.setColor(sf::Color(255, 255, 0)); //set Yellow
-			break; //optional
-		case 4:
-			gamePiece.setColor(sf::Color(204, 0, 0)); // set Red
-			break; //optional
-		}
-	
-
-	}
-	*/
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -88,3 +70,29 @@ int main()
 
 	return 0;
 }
+
+	//figure out how to rescale board and pieces
+
+
+
+	
+	//set colour of gamepiece based upon player id and pass to availPieces
+	void setPlayerColor(Player player, sf::Sprite gamePiece) {
+		switch (player.getID()) {
+		case 1:
+			gamePiece.setColor(sf::Color(0, 0, 205)); //set Blue
+			break; //optional
+		case 2:
+			gamePiece.setColor(sf::Color(0, 153, 76)); // set Green
+			break; //optional
+		case 3:
+			gamePiece.setColor(sf::Color(255, 255, 0)); //set Yellow
+			break; //optional
+		case 4:
+			gamePiece.setColor(sf::Color(204, 0, 0)); // set Red
+			break; //optional
+		}
+	
+
+	}
+	
